@@ -61,7 +61,10 @@ class NewPostPage(Handler):
             a = Posting(title = title, posting = posting)
             a.put()
 
-            self.redirect("/")
+            #blog_post_page = posting.key().id()
+            #self.redirect("/blog/" + str(posting.key().id()) )
+            blog_post_page = a.key().id()
+            self.redirect("/blog/" + str(blog_post_page))
         else:
             error = "Please enter a title and a body to your blog post."
             ##self.render_front(title, posting, error)
