@@ -2,11 +2,13 @@
 
 {% block content %}
 
-        {% for art in arts %}
+        {% for posting in postings %}
 
-            <div class="art">
-                <div class="art-title">{{art.title}}</div>
-                <pre class ="art-body">{{art.art}}</pre>
+            <div class="posting">
+                <div class="posting-title">
+                    <a href="/blog/{{ posting.key().id() }}">{{posting.title}}</a>
+                </div>
+                <pre class ="posting-body">{{posting.posting}}</pre>
             </div>
         {% endfor %}
 
