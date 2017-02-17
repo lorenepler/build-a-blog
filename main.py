@@ -70,13 +70,18 @@ class NewPostPage(Handler):
             ##self.render_front(title, posting, error)
             self.render("newpost.html", title=title, posting=posting, error=error)
 
-class ViewPostHandler(webapp2.RequestHandler):
+class ViewPostHandler(Handler):
     def get(self, id):
     #    self.response.write(id)
 
 #    def post(self):
         blog_post = Posting.get_by_id( int(id))
-        self.response.write("<h2>" + blog_post.title + "</h2>" + "<br>" + blog_post.posting)
+        title = blog_post.title
+        posting = blog_post.posting
+
+        self.render("single-posting.html", title=title, posting=posting)
+        #self.response.write("<h2>" + blog_post.title + "</h2>" + "<br>" + blog_post.posting)
+        #self.response.write(<p>3Test</p>)
 
 app = webapp2.WSGIApplication([
     ('/', MainPage),
